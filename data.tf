@@ -1,9 +1,14 @@
     provider "aws" {
-      region = "us-east-1"
-      access_key = "AKIAV3MRAQDIBNP3PGJN"
-      secret_key = "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"
+      region = var.region
+      access_key = var.access_key
+      secret_key = var.secret_key
     }
-     
+    
+    variable "region" {}
+    variable "access_key" {}
+    variable "secret_key" {}
+    
+    
     #Fetch VPC ID
     data "aws_vpc" "getvpcid" {
       tags = {
@@ -20,6 +25,7 @@
         }
       }
      
+    
     #Fetch nginx SG
     data "aws_security_group" "getsgid" {
       tags = {
@@ -34,7 +40,8 @@
       }
     }
      
+    
     #Fetch default aws kms key arn for ebs encryption
-    data "aws_kms_key" "by_alias" {
-      key_id = "alias/aws/ebs"
-    }
+    #data "aws_kms_key" "by_alias" {
+    #  key_id = "alias/aws/ebs"
+    #}
