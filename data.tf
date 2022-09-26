@@ -12,7 +12,7 @@
     #Fetch VPC ID
     data "aws_vpc" "getvpcid" {
       tags = {
-        Name = "vpc-33ac354e"
+        Name = "mco-dev-vpc"
       }
     }
      
@@ -21,7 +21,7 @@
     data "aws_subnet_ids" "getsubnets" {
       vpc_id = data.aws_vpc.getvpcid.id
       tags = {
-          Name = "subnet-ed6462e3"
+          Name = "mco-dev-sn-cmp"
         }
       }
      
@@ -29,7 +29,7 @@
     #Fetch nginx SG
     data "aws_security_group" "getsgid" {
       tags = {
-        Name = "sg-2b299333"
+        Name = "mco-dev-sg-cmp"
       }
     }
      
