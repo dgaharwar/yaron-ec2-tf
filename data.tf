@@ -9,7 +9,7 @@
     variable "secret_key" {}
     
     
-    #Fetch VPC ID
+    # Fetch VPC ID
     data "aws_vpc" "getvpcid" {
       tags = {
         Name = "myVpc"
@@ -26,14 +26,15 @@
       }
      
     
-    #Fetch nginx SG
+    # Fetch Nginx SG
     data "aws_security_group" "getsgid" {
       tags = {
         Name = "vpc-33ac354e"
       }
     }
      
-     
+    
+    # Fetch Elastic IP
     data "aws_eip" "eip_mco_basic" {
       tags = {
         Name = "eip-mco-basic"
@@ -41,7 +42,7 @@
     }
      
     
-    Fetch default aws kms key arn for ebs encryption
+    # Fetch default aws kMS key arn for EBS encryption
     data "aws_kms_key" "by_alias" {
       key_id = "alias/aws/ebs"
     }
