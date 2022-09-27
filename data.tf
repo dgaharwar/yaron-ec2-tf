@@ -12,7 +12,7 @@
     #Fetch VPC ID
     data "aws_vpc" "getvpcid" {
       tags = {
-        Name = "mco-dev-vpc"
+        Name = "myVpc"
       }
     }
      
@@ -21,7 +21,7 @@
     data "aws_subnet_ids" "getsubnets" {
       vpc_id = data.aws_vpc.getvpcid.id
       tags = {
-          Name = "mco-dev-sn-cmp"
+          Name = "myDefaultSubnet"
         }
       }
      
@@ -29,7 +29,7 @@
     #Fetch nginx SG
     data "aws_security_group" "getsgid" {
       tags = {
-        Name = "mco-dev-sg-cmp"
+        Name = "vpc-33ac354e"
       }
     }
      
@@ -41,7 +41,7 @@
     }
      
     
-    #Fetch default aws kms key arn for ebs encryption
-    #data "aws_kms_key" "by_alias" {
-    #  key_id = "alias/aws/ebs"
-    #}
+    Fetch default aws kms key arn for ebs encryption
+    data "aws_kms_key" "by_alias" {
+      key_id = "alias/aws/ebs"
+    }
